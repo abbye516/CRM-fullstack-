@@ -5,6 +5,7 @@ import DataBar from './Data-bar';
 import './client.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Popup from "reactjs-popup";
+import Axios from 'axios';
 
 
 class Clients extends Component {
@@ -13,6 +14,9 @@ class Clients extends Component {
         this.state = {
             showSignUp: false
         }
+    }
+    componentDidMount(){
+        Axios
     }
 
     render() {

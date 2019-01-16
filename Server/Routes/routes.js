@@ -2,22 +2,37 @@ const express = require('express')
 const router = express.Router()
 const User = require('../Models/UserDataModel')
 
-
+//get clients
 router.get('/clients', (req, res) => {
     User.find({}, function (err, client) {
         res.send(client)
     });
 })
 
+//actions
+router.get('/actions', (req, res) => {
+    User.find({}, 'name owner emailType', function (err, response) {
+        res.send(response)
+    });
+})
+//analytics
+router.get('/analytics', (req, res) => {
+    User.find({},  function (err, client) {
+        res.send(client)
+    });
+})
+
 //update client's data
-router.put('/clients:client', (req, res) => {
-    let client = req.params.client
-    User.findByIdAndUpdate(client._id, {
-        name: client.name,
-        country: client.country
-    }, function (err, res) {
-        console.log(res)
-    })
+router.put('/clients/:clientId', (req, res) => {
+    let client = req.params.clientId
+    User.findByIdAndUpdate(client, {
+        name: `${req.body.name}  ${req.body.surname}`,
+        country: req.body.country
+    },
+        { new: true }, 
+        function (err, res) {
+            console.log(res)
+        })
     res.end()
 })
 
@@ -30,15 +45,20 @@ router.post('/actions', async function (req, res) {
 });
 
 //update client in actions page
-router.put('/actions:client', (req, res) => {
+router.put('/actions/:client', (req, res) => {
     let client = req.params.client
-    User.findOneAndUpdate(client._id, {
-        name: client.name,
-        emailType: client.emailType,
-        sold: client.sold
-    }, function (err, res) {
-        console.log(res)
-    })
+    let value = Object.keys(req.body)
+    console.log(value[0])
+    User.findOneAndUpdate({ name: client },
+        {
+            $set:
+            {
+                [value[0]]: req.body[value],
+            }
+        }, { new: true },
+        function (err, doc) {
+            console.log(doc)
+        });
     res.end()
 })
 

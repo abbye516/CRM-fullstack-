@@ -1,0 +1,68 @@
+.allClients{
+    color:black;
+}
+.dataBar{
+    height: 5vh;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: none;    
+    background-color: #F7CE3E;
+    box-shadow: 2px 4px #888888;
+    align-items: center;
+    margin-top: 10px !important;
+    width: 90vw;
+    margin:0 auto;
+    padding-left:10px;
+}
+
+.client{
+    height: 5vh;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-gap: none;    
+    box-shadow: 0 3px #888888;
+    align-items: center;
+    margin-top: 10px !important;
+    width: 90vw;
+    margin:0 auto;
+    padding-left:10px;
+}
+.search-select select {
+	cursor: pointer;
+	background-color: transparent;
+	box-shadow: 0 2px gray;
+    border: none;
+    margin-left: 10px;
+
+}
+.search-select input{
+    border:none;
+    width: 150px;
+    box-shadow: 0 2px gray;
+    padding-left: 5px;
+}
+.popup{
+    width: 100px;
+    height:200px;
+    display: flex;
+    flex-direction: column;
+} 
+ /* .popup-content{
+    position: absolute;
+    z-index: 2;
+    width: 400px;
+    background:red;
+    border: 1px solid rgb(187, 187, 187);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+    padding: 5px;
+    top: 182.016px;
+    left: 436.5px;
+} */
+
+#emailtypes{
+    background-color: green;
+    width: 100px;
+    height:100px;
+}

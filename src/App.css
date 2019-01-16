@@ -1,0 +1,23 @@
+.App{
+  background-color: #ecf0f1;
+}
+.nav-bar{
+  background-color: #0a1612;
+  height: 5vh;
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: none;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+
+}
+/* .current:active {
+  background-color: grey;
+} */
+
+*{
+  color: blue;
+  text-decoration: none;
+}

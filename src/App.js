@@ -7,7 +7,7 @@ import { faCheck,faWindowClose, faTimesCircle} from '@fortawesome/free-solid-svg
 import { library } from '@fortawesome/fontawesome-svg-core'
 import Actions from './Components/Actions/Actions';
 import Analytics from './Components/Analytics/Analytics';
-import Clients from './Components/Clients/Client';
+import Clients from './Components/Clients/Clients';
 import Landing from './Components/Landing/Landing';
 library.add(faCheck)
 library.add(faWindowClose)

@@ -1,78 +1,36 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Moment from 'react-moment';
-import DataBar from './Data-bar';
 import './client.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios';
-import PopupDiv from './Popup';
+// import axios from 'axios';
+import Moment from 'react-moment';
 
 
-class Clients extends Component {
-    constructor() {
-        super()
-        this.state = {
-            data: [],
-            showPopup: false
-        }
-    }
-    async getUsers() {
-        return await axios.get('http://localhost:7000/clients')
-
-    }
-    async componentDidMount() {
-        const users = await this.getUsers()
-        console.log(users)
-        this.setState({ data: users.data })
-    }
-    updatePop = () => {
-        this.setState({
-            showPopup: !this.state.showPopup
-        })
+class Client extends Component {
+    updatePop = () =>{
+        this.props.popup(this.props.data._id)
     }
     render() {
-        // console.log(this.state.data)
-        let options = this.state.data[0]
-        console.log(options)
+        let client = this.props.data
+        // console.log(this.props.id)
         return (
-            <div className="allClients">
-                <div className="search-select">
-                    <input placeholder="search client"></input>
-                    <select className="drop-down">
-                        <option value="name">Name</option>
-                        <option value="surname">Surname</option>
-                        <option value="email">Email</option>
-                        <option value="country">Country</option>
-                        <option value="first-contact">First Contact</option>
-                        <option value="email">Email</option>
-                        <option value="sold">Sold</option>
-                        <option value="owner">Owner</option>
-                    </select>
+                <div >
+                    <div className="client" onClick={this.updatePop} >
+                        <div className="clientFN"> {client.name.split(' ')[0]} </div>
+                        <div className="clientLN"> {client.name.split(' ')[1]} </div>
+                        <div className="country">{client.country}</div>
+                        <div className="firstContact">
+                            <Moment format="DD/MM/YYYY">
+                                {client.firstContact}
+                            </Moment>  </div>
+                        <div className="email">{client.emailType !== null ? client.emailType : "-"}</div>
+                        <div className="sold">{client.sold ? <FontAwesomeIcon icon="check" /> : "-"}</div>
+                        <div className="owner">{client.owner} </div>
+                    </div>
+
+
                 </div>
-
-                <DataBar />
-
-                {this.state.data.map((m, index) => {
-                    return (
-                        <div className="client" key={index} onClick={this.updatePop}>
-                        <PopupDiv updatePop={this.updatePop} showPopup={this.state.showPopup} clientId={m.id} />
-                            <div className="clientFN"> {m.name.split(' ')[0]} </div>
-                            <div className="clientLN"> {m.name.split(' ')[1]} </div>
-                            <div className="country">{m.country}</div>
-                            <div className="firstContact">
-                                <Moment format="DD/MM/YYYY">
-                                    {m.firstContact}
-                                </Moment>  </div>
-                            <div className="email">{m.emailType !== null ? m.emailType : "-"}</div>
-                            <div className="sold">{m.sold ? <FontAwesomeIcon icon="check" /> : "-"}</div>
-                            <div className="owner">{m.owner} </div>
-                        </div>
-
-                    )
-                })}
-            </div>
         )
     }
 }
 
-export default Clients
+export default Client

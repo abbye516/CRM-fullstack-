@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './client.css'
 
 
 class DataBar extends Component {
-    constructor(){
-        super()
-    }
     render(){
         return(
             <div className="dataBar">

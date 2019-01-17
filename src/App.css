@@ -3,21 +3,23 @@
 }
 .nav-bar{
   background-color: #0a1612;
-  height: 5vh;
+  height: 40px;
   font-size: 18px;
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: none;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-
+  grid-template-columns: repeat(3,10%) auto;
+  justify-content: start;
+  align-content: center;
 }
 /* .current:active {
   background-color: grey;
 } */
 
-*{
-  color: blue;
+
+.nav-bar a{
+  color: white;
   text-decoration: none;
+}
+
+.nopop {
+  display: none;
 }

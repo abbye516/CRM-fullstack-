@@ -3,20 +3,21 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck,faWindowClose, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import Actions from './Components/Actions/Actions';
 import Analytics from './Components/Analytics/Analytics';
 import Clients from './Components/Clients/Client';
 import Landing from './Components/Landing/Landing';
-import Data from './data.json'
 library.add(faCheck)
+library.add(faWindowClose)
+library.add(faTimesCircle)
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      data: Data,
       currentPage : ""
     }
   }
@@ -37,7 +38,7 @@ class App extends Component {
           </div>
           <Route path="/" exact component={Landing} />
           <Route path="/actions" exact component={Actions} />
-          <Route path="/clients" exact render={({ match }) => <Clients match={match} clientData={this.state.data} />} />
+          <Route path="/clients" exact render={({ match }) => <Clients match={match} />} />
 
           <Route path="/analytics" exact component={Analytics} />
         </div>

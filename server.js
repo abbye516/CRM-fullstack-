@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 6000
+const port = process.env.PORT || 7000
 const bodyParser = require('body-parser')
 const path = require('path')
 const mongoose = require('mongoose')
@@ -17,7 +17,6 @@ app.use(bodyParser.json())
 
 mongoose.connect('mongodb://localhost/CRM', { useNewUrlParser: true })
 
-app.use('/', routes)
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
@@ -26,6 +25,7 @@ app.use(function (req, res, next) {
     next()
 })
 
+app.use('/', routes)
 //script to import users to DB
 const saveUser = () => {
     for (let i of data) {

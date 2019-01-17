@@ -4,24 +4,36 @@ import Moment from 'react-moment';
 import DataBar from './Data-bar';
 import './client.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Popup from "reactjs-popup";
-import Axios from 'axios';
+import axios from 'axios';
+import PopupDiv from './Popup';
 
 
 class Clients extends Component {
     constructor() {
         super()
         this.state = {
-            showSignUp: false
+            data: [],
+            showPopup: false
         }
     }
-    componentDidMount(){
-        Axios
-    }
+    async getUsers() {
+        return await axios.get('http://localhost:7000/clients')
 
+    }
+    async componentDidMount() {
+        const users = await this.getUsers()
+        console.log(users)
+        this.setState({ data: users.data })
+    }
+    updatePop = () => {
+        this.setState({
+            showPopup: !this.state.showPopup
+        })
+    }
     render() {
-        let data = this.props.clientData
-        // console.log(this.props.match)
+        // console.log(this.state.data)
+        let options = this.state.data[0]
+        console.log(options)
         return (
             <div className="allClients">
                 <div className="search-select">
@@ -39,9 +51,11 @@ class Clients extends Component {
                 </div>
 
                 <DataBar />
-                {data.map(m => {
+
+                {this.state.data.map((m, index) => {
                     return (
-                        <Popup trigger={<div className="client" key={m.id}>
+                        <div className="client" key={index} onClick={this.updatePop}>
+                        <PopupDiv updatePop={this.updatePop} showPopup={this.state.showPopup} clientId={m.id} />
                             <div className="clientFN"> {m.name.split(' ')[0]} </div>
                             <div className="clientLN"> {m.name.split(' ')[1]} </div>
                             <div className="country">{m.country}</div>
@@ -53,17 +67,6 @@ class Clients extends Component {
                             <div className="sold">{m.sold ? <FontAwesomeIcon icon="check" /> : "-"}</div>
                             <div className="owner">{m.owner} </div>
                         </div>
-                        } position="center">
-                            {close => (
-                                <div >
-                                    <div className="popup">
-                                        <a className="close" onClick={close}> &times; </a>
-                                        <span>Name</span>
-                                        <input placeholder="name"></input>
-                                    </div>
-                                </div>
-                            )}
-                        </Popup>
 
                     )
                 })}

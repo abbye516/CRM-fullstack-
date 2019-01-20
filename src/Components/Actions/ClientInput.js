@@ -24,30 +24,27 @@ class ClientInput extends Component {
         return clients
     }
 
-    //update clients
-    clientToUpdate = async () =>{
-        let clientToUpdate = this.state.selectedClient
-        let firstName = clientToUpdate.split(" ")[0]
-        let LN = clientToUpdate.split(" ")[1]
-        let fullName= `${firstName}%20${LN}`
+    // //update clients
+    // clientToUpdate = async () =>{
+    //     let clientToUpdate = this.state.selectedClient
+    //     let firstName = clientToUpdate.split(" ")[0]
+    //     let LN = clientToUpdate.split(" ")[1]
+    //     let fullName= `${firstName}%20${LN}`
 
-       await this.props.clientToUpdate(fullName)
-    }
-    selectedClient = async (event) => {
-        this.setState({
-            selectedClient: event.target.value
-        })
+    //    await this.props.clientToUpdate(fullName)
+    // }
+    selectedClient = (event) => {
+        // this.setState({
+        //     selectedClient: event.target.value
+        // })
+        this.props.clientToUpdate(event.target.value)
+
     }
     
     async componentDidMount() {
         this.receiveClientNames()
     }
     render() {
-         let clientToUpdate = this.state.selectedClient
-        let firstName = clientToUpdate.split(" ")[0]
-        let LN = clientToUpdate.split(" ")[1]
-        let fullName= `${firstName}%20${LN}`
-        console.log(fullName)
         return (
             <div>
                 <label for="client">Client </label>
@@ -55,7 +52,7 @@ class ClientInput extends Component {
                 <datalist id="clientNames">
                     {this.state.clients.map(m => {
                         return (
-                            <option >{m.name}</option>
+                            <option value = {m.name}>{m.name}</option>
                         )
                     })}
                 </datalist>

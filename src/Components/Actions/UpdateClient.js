@@ -64,7 +64,7 @@ class UpdateClient extends Component {
                         Transfer ownership to
                     </label>
 
-                    <input id="transferOwner" onInputCapture={this.handleInputs} type="text" list="owners" placeholder="owner"  />
+                    <input id="transferOwner" onInputCapture={this.handleInputs} name="owner" type="text" list="owners" placeholder="owner"  />
                     <datalist id="owners">
                         {this.state.clients.map(m=>{
                             return(

@@ -14,42 +14,39 @@ class PopupDiv extends Component {
         }
     }
     handleInputs = async (event) => {
-        const target = event.target
-        const name = target.name
-        const value =  target.value;
-    
-        await this.setState({
-          [name]: value
+      this.setState({
+            [event.target.name]: event.target.value
         })
-        
-      }
 
-    async updateUsers() {
-        return await axios.put(`http://localhost:7000/clients/${this.props.currentId}`, {
+    }
+     updateUsers = async () => {
+        console.log(this.props.currentId)
+        await axios.put(`http://localhost:7000/clients/${this.props.currentId}`, {
             name: this.state.name,
             surname: this.state.surname,
             country: this.state.country
         })
-
+       this.props.closePop()
+       this.props.getUsers()
     }
     render() {
         return (
             <div className='popup'>
                 <div className="form">
-                   <FontAwesomeIcon onClick={this.props.closePop} icon="times-circle" />
+                    <FontAwesomeIcon onClick={this.props.closePop} icon="times-circle" />
                     <div className="divLabels">
                         <label>
                             Name: {this.props.name}
 
-                            <input onChange={this.handleInputs}  type="text" placeholder="name" name="name" />
+                            <input onChange={this.handleInputs} type="text" placeholder="name" name="name" />
                         </label>
                         <label>
                             Surname:
-                            <input onChange={this.handleInputs}  type="text" placeholder="surname" name="surname" />
+                            <input onChange={this.handleInputs} type="text" placeholder="surname" name="surname" />
                         </label>
                         <label>
-                            Country
-                        <input type="text" onChange={this.handleInputs}  placeholder="country" name="country" />
+                            Country:
+                        <input type="text" onChange={this.handleInputs} placeholder="country" name="country" />
                         </label>
                     </div>
                     <button onClick={this.updateUsers}>Update</button>

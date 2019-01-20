@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 
 
 class Client extends Component {
+    //sending to ClientS currentId of selected client 
     updatePop = () =>{
         this.props.popup(this.props.data._id)
     }

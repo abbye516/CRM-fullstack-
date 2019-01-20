@@ -5,7 +5,6 @@ import axios from 'axios';
 import PopupDiv from './Popup';
 import Client from './client';
 
-
 class Clients extends Component {
     constructor() {
         super()
@@ -15,16 +14,17 @@ class Clients extends Component {
             currentId: ""
         }
     }
-    async getUsers() {
-        return await axios.get('http://localhost:7000/clients')
-
+    getUsers = async () => {
+        const users = await axios.get('http://localhost:7000/clients')
+        this.setState({
+            data: users.data
+        })
+        return users
     }
     async componentDidMount() {
-        const users = await this.getUsers()
-        // console.log(users)
-        
-        this.setState({ data: users.data })
+        this.getUsers()
     }
+    //receiving currentId of selected client
     updatePop = (currentId) => {
         console.log(currentId)
         this.setState({
@@ -32,14 +32,12 @@ class Clients extends Component {
             currentId: currentId
         })
     }
-    closePop = () =>{
+    closePop = () => {
         this.setState({
-            showPopup : false
+            showPopup: false
         })
     }
     render() {
-        // let options = this.state.data[0]
-        // console.log(options)
         return (
             <div className="allClients">
                 <div className="search-select">
@@ -56,10 +54,16 @@ class Clients extends Component {
                     </select>
                 </div>
                 <DataBar />
-               {this.state.showPopup && <PopupDiv updatePop={this.updatePop} showPopup={this.state.showPopup} closePop={this.closePop} currentId={this.state.currentId}/>}
+                {this.state.showPopup &&
+                    <PopupDiv
+                        updatePop={this.updatePop}
+                        showPopup={this.state.showPopup}
+                        closePop={this.closePop}
+                        currentId={this.state.currentId}
+                        getUsers={this.getUsers}
+                    />}
+                {this.state.data.map(m => <Client data={m} popup={this.updatePop} />)}
 
-                {this.state.data.map(m => <Client data={m}  popup={this.updatePop} /> )}
-             
             </div>
         )
     }

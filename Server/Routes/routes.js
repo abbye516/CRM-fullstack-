@@ -17,7 +17,7 @@ router.get('/actions', (req, res) => {
 })
 //analytics
 router.get('/analytics', (req, res) => {
-    User.find({},  function (err, client) {
+    User.find({}, function (err, client) {
         res.send(client)
     });
 })
@@ -25,11 +25,12 @@ router.get('/analytics', (req, res) => {
 //update client's data
 router.put('/clients/:clientId', (req, res) => {
     let client = req.params.clientId
+    console.log(req.body)
     User.findByIdAndUpdate(client, {
-        name: `${req.body.name}  ${req.body.surname}`,
+        name: `${req.body.name} ${req.body.surname}`,
         country: req.body.country
     },
-        { new: true }, 
+        { new: true },
         function (err, res) {
             console.log(res)
         })
@@ -47,17 +48,21 @@ router.post('/actions', async function (req, res) {
 //update client in actions page
 router.put('/actions/:client', (req, res) => {
     let client = req.params.client
+    console.log(client)
+    console.log(JSON.stringify(req.body))
     let value = Object.keys(req.body)
-    console.log(value[0])
+    // console.log(`the body: ${req.body}`)
+    // console.log(`change: ${value}`)
+    console.log(`value : ${value[0]}`)
     User.findOneAndUpdate({ name: client },
         {
             $set:
             {
-                [value[0]]: req.body[value],
+                [value[0]]: req.body[value]
             }
         }, { new: true },
         function (err, doc) {
-            console.log(doc)
+            console.log(`hello ${doc}`)
         });
     res.end()
 })

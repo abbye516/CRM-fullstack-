@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheck,faWindowClose, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCheck,faWindowClose, faTimesCircle, faChartLine} from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import Actions from './Components/Actions/Actions';
 import Analytics from './Components/Analytics/Analytics';
@@ -12,6 +12,7 @@ import Landing from './Components/Landing/Landing';
 library.add(faCheck)
 library.add(faWindowClose)
 library.add(faTimesCircle)
+library.add(faChartLine)
 
 
 class App extends Component {

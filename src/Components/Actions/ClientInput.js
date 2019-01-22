@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-// import AddClient from './AddClient';
-// import UpdateClient from './UpdateClient';
-// import AddClient from './AddClient';
 import './actions.css'
 import axios from 'axios';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
 
 class ClientInput extends Component {
     constructor() {
@@ -24,30 +19,19 @@ class ClientInput extends Component {
         return clients
     }
 
-    // //update clients
-    // clientToUpdate = async () =>{
-    //     let clientToUpdate = this.state.selectedClient
-    //     let firstName = clientToUpdate.split(" ")[0]
-    //     let LN = clientToUpdate.split(" ")[1]
-    //     let fullName= `${firstName}%20${LN}`
-
-    //    await this.props.clientToUpdate(fullName)
-    // }
     selectedClient = (event) => {
-        // this.setState({
-        //     selectedClient: event.target.value
-        // })
+   
         this.props.clientToUpdate(event.target.value)
 
     }
     
-    async componentDidMount() {
+    componentDidMount() {
         this.receiveClientNames()
     }
     render() {
         return (
             <div>
-                <label for="client">Client </label>
+                <label for="client">Client: </label>
                 <input id="client" type="text" list="clientNames" placeholder="Client Name" onChange={this.selectedClient}/>
                 <datalist id="clientNames">
                     {this.state.clients.map(m => {

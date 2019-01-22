@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../Models/UserDataModel')
+const analyticsCalc = require ('../Scripts/analyticCalcs')
+//badgeFunc.<nameOfFunc> 
 
 //get clients
 router.get('/clients', (req, res) => {
@@ -16,11 +18,23 @@ router.get('/actions', (req, res) => {
     });
 })
 //analytics
-router.get('/analytics', (req, res) => {
-    User.find({}, function (err, client) {
-        res.send(client)
-    });
+// router.get('/analytics', (req, res) => {
+//     let _countCountryHC = badgeFunc.getSoldCountries;
+//     let hottestCountry = badgeFunc.hotCountry;
+//     User.find({}, function (err, client) {
+//         res.send(client)
+//     });
+// })
+
+/////testing:
+router.get('/analytics', async (req, res) => {
+    let data = await User.find({});
+    let hottestCountry = analyticsCalc.hotCountry(data);
+    console.log(hottestCountry)
+    res.send(hottestCountry)
+
 })
+
 
 //update client's data
 router.put('/clients/:clientId', (req, res) => {
@@ -37,9 +51,9 @@ router.put('/clients/:clientId', (req, res) => {
     res.end()
 })
 
-
-//add new clients
+//add new clients from action page
 router.post('/actions', async function (req, res) {
+    console.log(req.body)
     let newUser = await new User(req.body)
     newUser.save()
     res.end()
@@ -49,10 +63,7 @@ router.post('/actions', async function (req, res) {
 router.put('/actions/:client', (req, res) => {
     let client = req.params.client
     console.log(client)
-    console.log(JSON.stringify(req.body))
     let value = Object.keys(req.body)
-    // console.log(`the body: ${req.body}`)
-    // console.log(`change: ${value}`)
     console.log(`value : ${value[0]}`)
     User.findOneAndUpdate({ name: client },
         {

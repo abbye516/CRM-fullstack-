@@ -9,7 +9,7 @@ import './actions.css'
 class Actions extends Component {    
     render() {
         return (
-            <div>
+            <div className="actions-container">
                 <UpdateClient />
                 <AddClient />
             </div>

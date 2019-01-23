@@ -6,7 +6,6 @@ class ClientAquisitionChart extends Component {
     render(){
         return(
             <div>
-                ClientAquisitionChart Chart
                 
             </div>
         )

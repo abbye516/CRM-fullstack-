@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../analytics.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 class EmailSent extends Component {
     render() {
         return (
             <div className="badge-container">
-                <div className="badge" id="emailBadge">
+                <div className="badge" id="emailBad">
                     <div >
-                        <FontAwesomeIcon className="icon" icon="chart-line" />
+                        <FontAwesomeIcon className="icon" icon="envelope" />
                     </div>
                 </div>
-
                 <div className="stats">
-                    <div className="number">14</div>
-                    <div className="text">New September Clients</div>
+                    <div className="stat">454</div>
+                    <div className="stat-text">Emails Sent</div>
                 </div>
             </div>
         )

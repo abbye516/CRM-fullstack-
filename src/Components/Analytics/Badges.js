@@ -11,11 +11,12 @@ class Badges extends Component {
 
     render(){
         return(
-            <div>
+            
+            <div className="allBadges-container">
+                <OutstandingClient />
+                <HottestCountry hottestCountry={this.props.hottestCountry}/>
                 <NewClients />
                 <EmailSent />
-                <OutstandingClient />
-                <HottestCountry />
             </div>
         )
     }

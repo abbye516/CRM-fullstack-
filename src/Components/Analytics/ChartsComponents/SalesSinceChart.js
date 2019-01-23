@@ -6,7 +6,6 @@ class SalesSince extends Component {
     render(){
         return(
             <div>
-                SalesSince Chart
                 
             </div>
         )

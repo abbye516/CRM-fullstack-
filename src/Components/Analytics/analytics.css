@@ -1,20 +1,57 @@
+.analytics-page{
+    height: 100%;
+    background-color: #ecf0f1;
+    padding: 20px;
+}
+.allBadges-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    
+}
+
+.badge-container{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    justify-content: center;
+    position: relative;
+    grid-gap: none;
+}
 .badge{
-    background-color: greenyellow;
     border-radius: 50%;
     padding: 20px;
-    width: 100px;
-    height: 100px;    
+    width: 60px;
+    height: 60px;    
     justify-content: center;
-    position: absolute;
-    display: grid;
+    display: grid; 
+    align-items: center;
 }
-.icon-container{
+/* .icon-container{
     width: 50px;
     height: 40px;
     position: absolute;
     border-radius: 50%;
     justify-self: center;
-}
+} */
 .icon{
-    font-size: 70px;
+    font-size: 48px;
+    color: white;
+}
+.stat{
+    font-size: 40px;
+}
+.stats{
+    display: grid;
+    grid-gap: 10px;
+}
+#hotCountry{
+    background-color: #fbc531;
+
+}
+#clientBad{
+    background-color: #2ecc71;
+
+}
+#emailBad{
+    background-color: #3498db;
 }

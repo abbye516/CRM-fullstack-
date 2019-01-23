@@ -6,7 +6,6 @@ class SalesByCountry extends Component {
     render(){
         return(
             <div>
-                SalesByCountry Chart
                 
             </div>
         )

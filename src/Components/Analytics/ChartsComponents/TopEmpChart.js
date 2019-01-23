@@ -6,7 +6,6 @@ class TopEmployee extends Component {
     render(){
         return(
             <div>
-                TopEmployee Chart
                 
             </div>
         )

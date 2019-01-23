@@ -1,4 +1,4 @@
-.App{
+body{
   background-color: #ecf0f1;
 }
 .nav-bar{
@@ -10,9 +10,9 @@
   justify-content: start;
   align-content: center;
 }
-/* .current:active {
+.current:active {
   background-color: grey;
-} */
+}
 
 
 .nav-bar a{

@@ -6,33 +6,31 @@ import axios from 'axios';
 class Analytics extends Component {
     constructor(){
         super()
-        this.setState={
-            data: [],
+        this.state={
             hottestCountry: {}
         }
     }
-    updateClientData = async () =>{
-        const users = await axios.get('http://localhost:7000/clients')
-        this.setState({
-            data: users.data
-        })
-        return users
+      componentDidMount(){
+        this.getBadgeFunc()
     }
     getBadgeFunc = async () =>{
         let badgeData = await axios.get('http://localhost:7000/analytics')
         let hottestCountry = badgeData.data.hottestCountry
         let clientsSold = badgeData.data.count
-        console.log(clientsSold)
+        let hottestCountryBadgeInfo = {name: hottestCountry, sold: clientsSold}
+        console.log(hottestCountry)
+        this.setState({
+            hottestCountry: hottestCountryBadgeInfo
+        })
     }
 
     render(){
-        this.getBadgeFunc()
+        console.log(this.state.hottestCountry)
         return(
-            <div>
-                <h1>Analytics Component</h1>
+            <div className="analytics-page">
                 <h2>Badges</h2>
-                <Badges />
-                <h2>Charts</h2>       
+               
+                <Badges hottestCountry={this.state.hottestCountry}/>
                 <Charts />         
             </div>
         )

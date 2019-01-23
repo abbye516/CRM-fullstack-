@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class OutstandingClient extends Component {
     render(){
         return(
-            <div>
-                OutstandingClient Badge
-                
+            <div className="badge-container">
+            <div className="badge" id="clientBad">
+                <div >
+                    <FontAwesomeIcon className="icon" icon="user" />
+                </div>
             </div>
+            <div className="stats">
+                <div className="stat">298</div>
+                <div className="stat-text">Outstanding Client</div>
+            </div>
+        </div>
         )
     }
 }

@@ -12,5 +12,16 @@ input{
     height: 100px;
     text-align: center;
 }
-.updateInputs{
+/* .updateInputs{
+} */
+
+.actions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px;
+    grid-gap: 20px;
+}
+.actions-container > div {
+    background-color: #fff;
+    padding: 15px;
 }

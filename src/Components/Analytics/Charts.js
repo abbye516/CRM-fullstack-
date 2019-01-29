@@ -10,10 +10,10 @@ class Charts extends Component {
     render(){
         return(
             <div>
+                <TopEmployee />
                 <SalesByCountry />
                 <SalesSince />
                 <ClientAquisitionChart />
-                <TopEmployee />
             </div>
         )
     }

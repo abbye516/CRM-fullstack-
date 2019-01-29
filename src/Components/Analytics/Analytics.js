@@ -7,7 +7,7 @@ class Analytics extends Component {
     constructor(){
         super()
         this.state={
-            hottestCountry: {}
+            hottestCountry: {},
         }
     }
       componentDidMount(){
@@ -15,13 +15,21 @@ class Analytics extends Component {
     }
     getBadgeFunc = async () =>{
         let badgeData = await axios.get('http://localhost:7000/analytics')
-        let hottestCountry = badgeData.data.hottestCountry
-        let clientsSold = badgeData.data.count
+        let hottestCountry = badgeData.data.hottestCountry.hottestCountry
+        let clientsSold = badgeData.data.hottestCountry.count
         let hottestCountryBadgeInfo = {name: hottestCountry, sold: clientsSold}
-        console.log(hottestCountry)
+        let totalEmailsSent = badgeData.data.emailsSent
+        let outstandingClients = badgeData.data.outstandingClients
+        console.log(badgeData.data)
         this.setState({
-            hottestCountry: hottestCountryBadgeInfo
+            hottestCountry: hottestCountryBadgeInfo,
+            emailCount: totalEmailsSent,
+            outstandingClients: outstandingClients
         })
+    }
+    getChartsData = async () =>{
+        let chartData = await axios.get('http://localhost:7000/analytics')
+        
     }
 
     render(){
@@ -30,7 +38,7 @@ class Analytics extends Component {
             <div className="analytics-page">
                 <h2>Badges</h2>
                
-                <Badges hottestCountry={this.state.hottestCountry}/>
+                <Badges hottestCountry={this.state.hottestCountry} emailCount={this.state.emailCount} outstandingClients={this.state.outstandingClients}/>
                 <Charts />         
             </div>
         )

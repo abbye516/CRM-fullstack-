@@ -14,7 +14,7 @@ class NewClients extends Component {
                 </div>
                 <div className="stats">
                     <div className="stat">14</div>
-                    <div className="stat-text">Hottest Country</div>
+                    <div className="stat-text">New Clients</div>
                 </div>
             </div>
         )

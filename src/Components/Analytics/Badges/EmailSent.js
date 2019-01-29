@@ -13,7 +13,7 @@ class EmailSent extends Component {
                     </div>
                 </div>
                 <div className="stats">
-                    <div className="stat">454</div>
+                    <div className="stat">{this.props.emailCount}</div>
                     <div className="stat-text">Emails Sent</div>
                 </div>
             </div>

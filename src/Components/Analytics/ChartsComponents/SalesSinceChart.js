@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class SalesSince extends Component {
     render(){
         return(
-            <div>
+            <div id="salesChart">
                 
             </div>
         )

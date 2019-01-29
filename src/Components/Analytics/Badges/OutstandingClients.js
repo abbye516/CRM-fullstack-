@@ -12,7 +12,7 @@ class OutstandingClient extends Component {
                 </div>
             </div>
             <div className="stats">
-                <div className="stat">298</div>
+                <div className="stat">{this.props.outstandingClients}</div>
                 <div className="stat-text">Outstanding Client</div>
             </div>
         </div>

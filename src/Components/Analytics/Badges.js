@@ -13,10 +13,10 @@ class Badges extends Component {
         return(
             
             <div className="allBadges-container">
-                <OutstandingClient />
+                <OutstandingClient outstandingClients={this.props.outstandingClients} />
                 <HottestCountry hottestCountry={this.props.hottestCountry}/>
                 <NewClients />
-                <EmailSent />
+                <EmailSent emailCount= {this.props.emailCount}/>
             </div>
         )
     }

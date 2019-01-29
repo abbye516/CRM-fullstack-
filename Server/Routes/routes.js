@@ -30,8 +30,16 @@ router.get('/actions', (req, res) => {
 router.get('/analytics', async (req, res) => {
     let data = await User.find({});
     let hottestCountry = analyticsCalc.hotCountry(data);
-    console.log(hottestCountry)
-    res.send(hottestCountry)
+    let totalEmailsSent = analyticsCalc.emailsSent(data)
+    let outstandingClients = analyticsCalc.outstandingClients(data)
+    let topEmployeesChart = analyticsCalc.topEmployeesChart(data)
+    let allBadgeAnalytics = {
+        hottestCountry: hottestCountry,
+        emailsSent: totalEmailsSent,
+        outstandingClients: outstandingClients,
+        topEmployeesChart: topEmployeesChart
+     }
+    res.send(allBadgeAnalytics)
 
 })
 

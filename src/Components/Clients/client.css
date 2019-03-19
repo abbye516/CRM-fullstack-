@@ -35,6 +35,13 @@
     margin-left: 10px;
 
 }
+.search-select{
+    margin-top: 10px !important;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+
 .search-select input{
     border:none;
     width: 150px;

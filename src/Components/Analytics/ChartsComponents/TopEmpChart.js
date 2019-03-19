@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { BarChart,ResponsiveContainer, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { BarChart, ResponsiveContainer, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 const data = [
     { name: "Abby", sales: 40 },
@@ -16,22 +16,26 @@ class TopEmployee extends Component {
     render() {
         return (
             <div id="employeeChart">
-                top employee chart
-                {/* <ResponsiveContainer className="resCont" width='100%'> */}
+                <div class="chart-title ">
+                    Top Employee Chart
+                </div>
+                <div class="chart">
+                    {/* <ResponsiveContainer className="resCont" width='100%'> */}
                     <BarChart
                         width={600}
                         height={300}
                         data={data}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                        
-                        >
+
+                    >
                         <XAxis dataKey="name" />
                         <YAxis />
-                     
+
                         <Bar dataKey="sales" fill="#8884d8" />
                         {/* <Bar dataKey="uv"  /> */}
                     </BarChart>
-                {/* </ResponsiveContainer> */}
+                    {/* </ResponsiveContainer> */}
+                </div>
             </div>
         )
     }

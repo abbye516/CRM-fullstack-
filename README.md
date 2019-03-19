@@ -1,3 +1,7 @@
+ A Client Management System with a database based table and a graphic analytics dashboard in a Single Page Application.
+ Technologies used: 
+ React, Node.js, Express, MongoDB + NPM packages
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

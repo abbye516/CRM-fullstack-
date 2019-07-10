@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './actions.css'
 import axios from 'axios';
+import { Input } from 'semantic-ui-react';
 
 class ClientInput extends Component {
     constructor() {
@@ -31,8 +32,9 @@ class ClientInput extends Component {
     render() {
         return (
             <div>
-                <label for="client">Client: </label>
-                <input id="client" type="text" list="clientNames" placeholder="Client Name" onChange={this.selectedClient}/>
+                {/* <label for="client">Client: </label> */}
+               <Input label="Client"  type="text" list="clientNames" placeholder="Client Name" onChange={this.selectedClient}></Input>
+                {/* <input id="client" type="text" list="clientNames" placeholder="Client Name" onChange={this.selectedClient}/> */}
                 <datalist id="clientNames">
                     {this.state.clients.map(m => {
                         return (

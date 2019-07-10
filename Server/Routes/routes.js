@@ -61,7 +61,7 @@ router.put('/clients/:clientId', (req, res) => {
 
 //add new clients from action page
 router.post('/actions', async function (req, res) {
-    console.log(req.body)
+    console.log(`${req.body} added a client` )
     let newUser = await new User(req.body)
     newUser.save()
     res.end()

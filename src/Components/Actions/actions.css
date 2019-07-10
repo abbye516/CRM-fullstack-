@@ -3,17 +3,16 @@
     grid-template-columns: 1fr 4fr;
     grid-gap: none;
 }
-input{
+/* input{
     width: 60%;
-}
+} */
 #add-client{
     background-color: green;
     width: 100px;
     height: 100px;
     text-align: center;
 }
-/* .updateInputs{
-} */
+
 
 .actions-container {
     display: grid;
@@ -24,4 +23,21 @@ input{
 .actions-container > div {
     background-color: #fff;
     padding: 15px;
+}
+
+.add-btn{
+    justify-self: center;
+}
+
+.centerHeaders{
+
+    margin-left: 44%;
+}
+
+.actionsBtn{
+    width:8vw;
+}
+
+.inputTest{
+    width:15vw;
 }

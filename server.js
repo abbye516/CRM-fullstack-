@@ -36,9 +36,6 @@ const saveUser = () => {
 // saveUser()
 
 
-
-
-
 app.listen(port, function () {
     console.log(`Port ${port} is running`)
 })
